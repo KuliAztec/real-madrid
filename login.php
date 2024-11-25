@@ -19,17 +19,22 @@
       $email = $_POST['email'];
       $password = $_POST['password'];
   
-      $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
+      $query = "SELECT * FROM user WHERE email = '$email'";
       $result = mysqli_query($conn, $query);
   
       if (mysqli_num_rows($result) == 1) {
-          session_start();
-          $_SESSION['loggedin'] = true;
-          $_SESSION['email'] = $email;
-          echo "Login successful!";
-          // Redirect
-          header("Location: home.php");
-          exit;
+          $user = mysqli_fetch_assoc($result);
+          if (password_verify($password, $user['password'])) {
+              session_start();
+              $_SESSION['loggedin'] = true;
+              $_SESSION['email'] = $email;
+              echo "Login successful!";
+              // Redirect
+              header("Location: home.php");
+              exit;
+          } else {
+              echo "Invalid email or password.";
+          }
       } else {
           echo "Invalid email or password.";
       }
