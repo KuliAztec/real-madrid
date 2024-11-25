@@ -1,3 +1,63 @@
+<?php
+  // Create connection
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "realmadrid";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  
+  // Check connection
+  if ($conn->connect_error) {
+      die("Cek Connection " .$conn->connect_error);
+  }
+?>
+
+<?php
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+  
+      $query = "SELECT * FROM manager WHERE email = '$email' AND password = '$password'";
+      $result = mysqli_query($conn, $query);
+  
+      if (mysqli_num_rows($result) == 1) {
+          session_start();
+          $_SESSION['loggedin'] = true;
+          $_SESSION['email'] = $email;
+          echo "Login successful!";
+          // Redirect
+          header("Location: home.php");
+          exit;
+      } else {
+          echo "Invalid username or password.";
+      }
+  }
+?>
+
+<?php
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+  
+      $query = "SELECT * FROM pemain WHERE email = '$email' AND password = '$password'";
+      $result = mysqli_query($conn, $query);
+  
+      if (mysqli_num_rows($result) == 1) {
+          session_start();
+          $_SESSION['loggedin'] = true;
+          $_SESSION['email'] = $email;
+          echo "Login successful!";
+          // Redirect
+          header("Location: home.php");
+          exit;
+      } else {
+          echo "Invalid username or password.";
+      }
+  }
+?>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -151,15 +211,15 @@
     <div class="container">
       <div class="main-box">
         <h1>Log In</h1>
-        <form action="">
+        <form action="login.php" method="post">
           <div class="input-box">
             <span class="icon"><i data-feather="mail"></i></span>
-            <input type="email" required />
+            <input type="email" name="email" required />
             <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><i data-feather="lock"></i></span>
-            <input type="password" required />
+            <input type="password" name="password" required />
             <label>Password</label>
           </div>
           <div class="check">
