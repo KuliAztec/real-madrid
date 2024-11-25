@@ -1,3 +1,40 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "realmadrid";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Cek Connection " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($password == $confirm_password) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO user (nama, email, password) VALUES ('$name', '$email', '$hashed_password')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    } else {
+        echo "Passwords do not match";
+    }
+}
+
+$conn->close();
+?>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -136,25 +173,25 @@
     <div class="container">
       <div class="main-box">
         <h1>Register</h1>
-        <form action="">
+        <form action="" method="POST">
           <div class="input-box">
             <span class="icon"><i data-feather="user"></i></span>
-            <input type="text" required />
+            <input type="text" name="name" required />
             <label>Name</label>
           </div>
           <div class="input-box">
             <span class="icon"><i data-feather="mail"></i></span>
-            <input type="email" required />
+            <input type="email" name="email" required />
             <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><i data-feather="lock"></i></span>
-            <input type="password" required />
+            <input type="password" name="password" required />
             <label>Password</label>
           </div>
           <div class="input-box">
             <span class="icon"><i data-feather="lock"></i></span>
-            <input type="password" required />
+            <input type="password" name="confirm_password" required />
             <label>Confirm Password</label>
           </div>
           <button type="submit" class="btn">Sign Up</button>
