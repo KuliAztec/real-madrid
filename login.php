@@ -19,7 +19,7 @@
       $email = $_POST['email'];
       $password = $_POST['password'];
   
-      $query = "SELECT * FROM manager WHERE email = '$email' AND password = '$password'";
+      $query = "SELECT * FROM user WHERE email = '$email' AND password = '$password'";
       $result = mysqli_query($conn, $query);
   
       if (mysqli_num_rows($result) == 1) {
@@ -31,32 +31,12 @@
           header("Location: home.php");
           exit;
       } else {
-          echo "Invalid username or password.";
+          echo "Invalid email or password.";
       }
   }
 ?>
 
-<?php
-  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
-      $email = $_POST['email'];
-      $password = $_POST['password'];
-  
-      $query = "SELECT * FROM pemain WHERE email = '$email' AND password = '$password'";
-      $result = mysqli_query($conn, $query);
-  
-      if (mysqli_num_rows($result) == 1) {
-          session_start();
-          $_SESSION['loggedin'] = true;
-          $_SESSION['email'] = $email;
-          echo "Login successful!";
-          // Redirect
-          header("Location: home.php");
-          exit;
-      } else {
-          echo "Invalid username or password.";
-      }
-  }
-?>
+
 
 <html lang="en">
   <head>
