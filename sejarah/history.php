@@ -1,3 +1,20 @@
+<?php
+    $servername = "localhost"; // Ganti dengan server Anda
+    $username = "root"; // Ganti dengan username Anda
+    $password = ""; // Ganti dengan password Anda
+    $dbname = "realmadrid"; // Ganti dengan nama database Anda
+    
+    // Membuat koneksi
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    
+    // Memeriksa koneksi
+    if ($conn->connect_error) {
+        die("Koneksi gagal: " . $conn->connect_error);
+    }
+
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +33,7 @@
 
         /* Splash Screen */
         #splash-screen {
-            background-image: url("asset/history-splash.png");
+            background-image: url("../asset/history-splash.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -36,7 +53,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            background: url('asset/champion.png') no-repeat center center/cover;
+            background: url('../asset/champion.png') no-repeat center center/cover;
             color: white;
             display: flex;
             flex-direction: column;
@@ -118,8 +135,8 @@
         <div class="container">
             <header>
                 <h1 class="title">HISTORY</h1>
-                <a href="home.php">
-                    <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
+                <a href="../home.php">
+                    <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
                 </a>
             </header>
             <main>

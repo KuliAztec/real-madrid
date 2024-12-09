@@ -1,4 +1,5 @@
 <?php
+  session_start();
   // Create connection
   $servername = "localhost";
   $username = "root";
@@ -25,9 +26,9 @@
       if (mysqli_num_rows($result) == 1) {
           $user = mysqli_fetch_assoc($result);
           if (password_verify($password, $user['password'])) {
-              session_start();
               $_SESSION['loggedin'] = true;
               $_SESSION['email'] = $email;
+              $_SESSION['id_user'] = $user['id_user']; // Set the user ID in session
               echo "Login successful!";
               // Redirect
               header("Location: home.php");

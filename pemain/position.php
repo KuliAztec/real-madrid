@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +15,7 @@
             padding: 0;
             height: 100vh;
             width: 100%;
-            background: url(asset/background-hitamputih.jpg);
+            background: url(../asset/background-hitamputih.jpg);
             background-size: cover;
             background-position: center;
             transition: opacity 0.3s ease-in-out;
@@ -71,22 +76,22 @@
 </head>
 <body>
     <div class="container">
-        <a href="home.php" class="home-icon">
-            <img src="asset/icon-home.png" alt="Home">
+        <a href="../home.php" class="home-icon">
+            <img src="../asset/icon-home.png" alt="Home">
         </a>
 
         <div class="positions">
             <a href="forward.php" class="position-button">
-                <img src="asset/forward.png" alt="Forward" class="position-image">
+                <img src="../asset/forward.png" alt="Forward" class="position-image">
             </a>
             <a href="defender.php" class="position-button">
-                <img src="asset/defeder.png" alt="Defender" class="position-image">
+                <img src="../asset/defeder.png" alt="Defender" class="position-image">
             </a>
             <a href="midfielder.php" class="position-button">
-                <img src="asset/midfielder.png" alt="Midfielder" class="position-image">
+                <img src="../asset/midfielder.png" alt="Midfielder" class="position-image">
             </a>
             <a href="goalkeeper.php" class="position-button">
-                <img src="asset/goalkeeper.png" alt="Goalkeeper" class="position-image">
+                <img src="../asset/goalkeeper.png" alt="Goalkeeper" class="position-image">
             </a>
         </div>
     </div>
