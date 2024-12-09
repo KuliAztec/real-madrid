@@ -108,7 +108,7 @@
         <h1>REAL <span>MADRID</span></h1>
       </div>
       <div class="menu">
-        <a href="home.php">HOME</a>
+        <a href="index.php">HOME</a>
         <a href="history.php">HISTORY</a>
         <a href="players.php">PLAYERS</a>
         <a href="game.php">GAMES</a>

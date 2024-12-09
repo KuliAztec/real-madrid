@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defender</title>
+    <title>Midfielder</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <style>
         * {
@@ -23,7 +23,7 @@
             color: white;
         }
 
-        #defender-page {
+        #midfielder-page {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -144,45 +144,41 @@
 </head>
 <body>
 
-    <!-- Defender Page -->
-    <div id="defender-page">
+    <!-- Midfielder Page -->
+    <div id="midfielder-page">
         <div class="header">
             <img src="asset/icon-white-back.png" alt="Back" onclick="window.location.href='position.php'">
             <img src="asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
         </div>
-        <h1>Defenders Players</h1>
+        <h1>Midfielder Players</h1>
         <div class="players-grid">
-            <div class="player-card" onclick="showBiodata('Carvajal', 2, 11, 1, 0, 878, 3, 10)">
-                <img src="asset/pemain/depan/defender/carvajal.png" alt="Carvajal">
-                <p>Carvajal</p>
+            <div class="player-card" onclick="showBiodata('Bellingham', 5, 14, 2, 2, 1205, 18, 23)">
+                <img src="asset/pemain/depan/midfielder/Bellingham.png" alt="Bellingham">
+                <p>Bellingham</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Militao', 3, 17, 1, 1, 1312, 11, 11)">
-                <img src="asset/pemain/depan/defender/Militao.png" alt="Militao">
-                <p>Militao</p>
+            <div class="player-card" onclick="showBiodata('Camavinga', 6, 8, 0, 0, 521, 2, 17)">
+                <img src="asset/pemain/depan/midfielder/Camavinga.png" alt="Camavinga">
+                <p>Camavinga</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Alaba', 4, 17, 0, 2, 1407, 14, 2)">
-                <img src="asset/pemain/depan/defender/alaba.png" alt="Alaba">
-                <p>Alaba</p>
+            <div class="player-card" onclick="showBiodata('Valverde', 8, 18, 4, 1, 1527, 18, 9)">
+                <img src="asset/pemain/depan/midfielder/Valverde.png" alt="Valverde">
+                <p>Valverde</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Lucas', 17, 14, 2, 0, 669, 3, 5)">
-                <img src="asset/pemain/depan/defender/lucas.png" alt="Lucas">
-                <p>Lucas V.</p>
+            <div class="player-card" onclick="showBiodata('Modrić', 10, 18, 0, 2, 801, 6, 6)">
+                <img src="asset/pemain/depan/midfielder/Modrić.png" alt="Modrić">
+                <p>Modrić</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Vallejo', 18, 0, 0, 0, 0, 0, 0)">
-                <img src="asset/pemain/depan/defender/vallejo.png" alt="Vallejo">
-                <p>Vallejo</p>
+            <div class="player-card" onclick="showBiodata('Tchouaméni', 15, 14, 0, 0, 1146, 9, 11)">
+                <img src="asset/pemain/depan/midfielder/Tchouaméni.png" alt="Tchouaméni">
+                <p>Tchouaméni</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Fran', 20, 13, 0, 0, 582, 3, 7)">
-                <img src="asset/pemain/depan/defender/fran.png" alt="Fran">
-                <p>Fran Garcia</p>
+            <div class="player-card" onclick="showBiodata('Arda', 15, 13, 0, 1, 381, 9, 13)">
+                <img src="asset/pemain/depan/midfielder/Arda.png" alt="Arda">
+                <p>Arda Güler</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Rudiger', 22, 18, 2, 0, 1537, 9, 8)">
-                <img src="asset/pemain/depan/defender/rudiger.png" alt="Rudiger">
-                <p>Rudiger</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Mendy', 23, 14, 0, 0, 1039, 0, 8)">
-                <img src="asset/pemain/depan/defender/Mendy.png" alt="Mendy">
-                <p>F. Mendy</p>
+            <div class="player-card" onclick="showBiodata('Ceballos', 19, 7, 0, 0, 197, 0, 8)">
+                <img src="asset/pemain/depan/midfielder/Ceballos.png" alt="Ceballos">
+                <p>D. Ceballos</p>
             </div>
         </div>
     </div>
@@ -190,7 +186,7 @@
     <!-- Biodata Page -->
     <div id="biodata-page" class="container">
         <div class="header">
-            <img src="asset/icon-white-back.png" alt="Back" onclick="showDefenderPage()">
+            <img src="asset/icon-white-back.png" alt="Back" onclick="showmidfielderPage()">
             <img src="asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
         </div>
         <div class="biodata-content">
@@ -210,9 +206,9 @@
 
     <script>
         function showBiodata(name, number, matches, goals, assists, minutes, shots, fouls) {
-            document.getElementById('defender-page').style.display = 'none';
+            document.getElementById('midfielder-page').style.display = 'none';
             document.getElementById('biodata-page').style.display = 'flex';
-            document.getElementById('player-image').src = `asset/pemain/depan/defender/${name.toLowerCase().replace(' ', '')}.png`;
+            document.getElementById('player-image').src = `asset/pemain/depan/midfielder/${name.toLowerCase().replace(' ', '')}.png`;
             document.getElementById('player-name').innerText = name;
             document.getElementById('player-number').innerText = number;
             document.getElementById('matches-played').innerText = matches;
@@ -223,9 +219,9 @@
             document.getElementById('fouls-received').innerText = fouls;
         }
 
-        function showDefenderPage() {
+        function showmidfielderPage() {
             document.getElementById('biodata-page').style.display = 'none';
-            document.getElementById('defender-page').style.display = 'flex';
+            document.getElementById('midfielder-page').style.display = 'flex';
         }
     </script>
 

@@ -136,7 +136,7 @@
     <div class="container" id="page1">
         <header>
             <h1 class="title">GAMES</h1>
-            <a href="home.php">
+            <a href="index.php">
                 <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>
@@ -147,7 +147,7 @@
     <div class="container" id="page2" style="display: none;">
         <header>
             <h1 class="title">GAMES</h1>
-            <a href="home.php">
+            <a href="index.php">
                 <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>
@@ -167,7 +167,7 @@
     <div class="container" id="page3" style="display: none;">
         <header>
             <h1 class="title">GAMES</h1>
-            <a href="home.php">
+            <a href="index.php">
                 <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>
@@ -187,7 +187,7 @@
     <div class="container" id="page4" style="display: none;">
         <header>
             <h1 class="title">GAMES</h1>
-            <a href="home.php">
+            <a href="index.php">
                 <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>
@@ -207,7 +207,7 @@
     <div class="container" id="page5" style="display: none;">
         <header>
             <h1 class="title">GAMES</h1>
-            <a href="home.php">
+            <a href="index.php">
                 <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>
@@ -227,7 +227,7 @@
     <div class="container" id="page6" style="display: none;">
         <header>
             <h1 class="title">GAMES</h1>
-            <a href="home.php">
+            <a href="index.php">
                 <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>
@@ -248,7 +248,7 @@
     <div class="container" id="scorePage" style="display: none;">
         <header>
             <h1 class="title">SCORE</h1>
-            <a href="home.php">
+            <a href="index.php">
                 <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>

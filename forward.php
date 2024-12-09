@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defender</title>
+    <title>Forward</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <style>
         * {
@@ -23,7 +23,7 @@
             color: white;
         }
 
-        #defender-page {
+        #forward-page {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -80,9 +80,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 50px;
-        padding: 150px; 
-        max-width: 1000px;
-        margin-top: -115px;
+        padding: 200px; 
+        max-width: 800px;
+        margin-top: -155px;
         }
 
 
@@ -144,45 +144,33 @@
 </head>
 <body>
 
-    <!-- Defender Page -->
-    <div id="defender-page">
+    <!-- Forward Page -->
+    <div id="forward-page">
         <div class="header">
             <img src="asset/icon-white-back.png" alt="Back" onclick="window.location.href='position.php'">
             <img src="asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
         </div>
-        <h1>Defenders Players</h1>
+        <h1>Forwards Players</h1>
         <div class="players-grid">
-            <div class="player-card" onclick="showBiodata('Carvajal', 2, 11, 1, 0, 878, 3, 10)">
-                <img src="asset/pemain/depan/defender/carvajal.png" alt="Carvajal">
-                <p>Carvajal</p>
+            <div class="player-card" onclick="showBiodata('Vini', 7, 18, 12, 6, 1522, 43, 48)">
+                <img src="asset/pemain/depan/forward/Vini.png" alt="Vini">
+                <p>Vini Jr.</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Militao', 3, 17, 1, 1, 1312, 11, 11)">
-                <img src="asset/pemain/depan/defender/Militao.png" alt="Militao">
-                <p>Militao</p>
+            <div class="player-card" onclick="showBiodata('Mbappé', 9, 17, 9, 2, 1410, 54, 17)">
+                <img src="asset/pemain/depan/forward/Mbappé.png" alt="Mbappé">
+                <p>Mbappé</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Alaba', 4, 17, 0, 2, 1407, 14, 2)">
-                <img src="asset/pemain/depan/defender/alaba.png" alt="Alaba">
-                <p>Alaba</p>
+            <div class="player-card" onclick="showBiodata('Rodrygo', 11, 15, 3, 2, 919, 16, 14)">
+                <img src="asset/pemain/depan/forward/Rodrygo.png" alt="Rodrygo">
+                <p>Rodrygo</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Lucas', 17, 14, 2, 0, 669, 3, 5)">
-                <img src="asset/pemain/depan/defender/lucas.png" alt="Lucas">
-                <p>Lucas V.</p>
+            <div class="player-card" onclick="showBiodata('Endrick', 16, 11, 2, 0, 125, 10, 4)">
+                <img src="asset/pemain/depan/forward/Endrick.png" alt="Endrick">
+                <p>Endrick V.</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Vallejo', 18, 0, 0, 0, 0, 0, 0)">
-                <img src="asset/pemain/depan/defender/vallejo.png" alt="Vallejo">
-                <p>Vallejo</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Fran', 20, 13, 0, 0, 582, 3, 7)">
-                <img src="asset/pemain/depan/defender/fran.png" alt="Fran">
-                <p>Fran Garcia</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Rudiger', 22, 18, 2, 0, 1537, 9, 8)">
-                <img src="asset/pemain/depan/defender/rudiger.png" alt="Rudiger">
-                <p>Rudiger</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Mendy', 23, 14, 0, 0, 1039, 0, 8)">
-                <img src="asset/pemain/depan/defender/Mendy.png" alt="Mendy">
-                <p>F. Mendy</p>
+            <div class="player-card" onclick="showBiodata('Brahim', 21, 10, 1, 1, 267, 4, 7)">
+                <img src="asset/pemain/depan/forward/Brahim.png" alt="Brahim">
+                <p>Brahim</p>
             </div>
         </div>
     </div>
@@ -190,7 +178,7 @@
     <!-- Biodata Page -->
     <div id="biodata-page" class="container">
         <div class="header">
-            <img src="asset/icon-white-back.png" alt="Back" onclick="showDefenderPage()">
+            <img src="asset/icon-white-back.png" alt="Back" onclick="showforwardPage()">
             <img src="asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
         </div>
         <div class="biodata-content">
@@ -210,9 +198,9 @@
 
     <script>
         function showBiodata(name, number, matches, goals, assists, minutes, shots, fouls) {
-            document.getElementById('defender-page').style.display = 'none';
+            document.getElementById('forward-page').style.display = 'none';
             document.getElementById('biodata-page').style.display = 'flex';
-            document.getElementById('player-image').src = `asset/pemain/depan/defender/${name.toLowerCase().replace(' ', '')}.png`;
+            document.getElementById('player-image').src = `asset/pemain/depan/forward/${name.toLowerCase().replace(' ', '')}.png`;
             document.getElementById('player-name').innerText = name;
             document.getElementById('player-number').innerText = number;
             document.getElementById('matches-played').innerText = matches;
@@ -223,9 +211,9 @@
             document.getElementById('fouls-received').innerText = fouls;
         }
 
-        function showDefenderPage() {
+        function showforwardPage() {
             document.getElementById('biodata-page').style.display = 'none';
-            document.getElementById('defender-page').style.display = 'flex';
+            document.getElementById('forward-page').style.display = 'flex';
         }
     </script>
 

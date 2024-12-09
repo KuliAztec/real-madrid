@@ -118,7 +118,7 @@
         <div class="container">
             <header>
                 <h1 class="title">HISTORY</h1>
-                <a href="home.php">
+                <a href="index.php">
                     <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
                 </a>
             </header>

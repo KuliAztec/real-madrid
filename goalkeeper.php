@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defender</title>
+    <title>Goalkeeper</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <style>
         * {
@@ -23,7 +23,7 @@
             color: white;
         }
 
-        #defender-page {
+        #goalkeeper-page {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -79,10 +79,10 @@
         .players-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 50px;
-        padding: 150px; 
+        gap: 120px;
+        padding: 300px; 
         max-width: 1000px;
-        margin-top: -115px;
+        margin-top: -185px;
         }
 
 
@@ -92,7 +92,7 @@
             background: rgba(0, 0, 0, 0.6);
             padding: 2px;
             border-radius: 20px;
-            width: 130px;
+            width: 160px;
             background: transparent;
             border: 3px solid rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(8px);
@@ -144,45 +144,21 @@
 </head>
 <body>
 
-    <!-- Defender Page -->
-    <div id="defender-page">
+    <!-- goalkeeper Page -->
+    <div id="goalkeeper-page">
         <div class="header">
             <img src="asset/icon-white-back.png" alt="Back" onclick="window.location.href='position.php'">
             <img src="asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
         </div>
-        <h1>Defenders Players</h1>
+        <h1>Goalkeeper</h1>
         <div class="players-grid">
-            <div class="player-card" onclick="showBiodata('Carvajal', 2, 11, 1, 0, 878, 3, 10)">
-                <img src="asset/pemain/depan/defender/carvajal.png" alt="Carvajal">
-                <p>Carvajal</p>
+            <div class="player-card" onclick="showBiodata('Courtois', 1, 13, 10, 30, 1170, 30, 13)">
+                <img src="asset/pemain/depan/goalkeeper/Courtois.png" alt="Courtois">
+                <p>Courtois</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Militao', 3, 17, 1, 1, 1312, 11, 11)">
-                <img src="asset/pemain/depan/defender/Militao.png" alt="Militao">
-                <p>Militao</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Alaba', 4, 17, 0, 2, 1407, 14, 2)">
-                <img src="asset/pemain/depan/defender/alaba.png" alt="Alaba">
-                <p>Alaba</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Lucas', 17, 14, 2, 0, 669, 3, 5)">
-                <img src="asset/pemain/depan/defender/lucas.png" alt="Lucas">
-                <p>Lucas V.</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Vallejo', 18, 0, 0, 0, 0, 0, 0)">
-                <img src="asset/pemain/depan/defender/vallejo.png" alt="Vallejo">
-                <p>Vallejo</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Fran', 20, 13, 0, 0, 582, 3, 7)">
-                <img src="asset/pemain/depan/defender/fran.png" alt="Fran">
-                <p>Fran Garcia</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Rudiger', 22, 18, 2, 0, 1537, 9, 8)">
-                <img src="asset/pemain/depan/defender/rudiger.png" alt="Rudiger">
-                <p>Rudiger</p>
-            </div>
-            <div class="player-card" onclick="showBiodata('Mendy', 23, 14, 0, 0, 1039, 0, 8)">
-                <img src="asset/pemain/depan/defender/Mendy.png" alt="Mendy">
-                <p>F. Mendy</p>
+            <div class="player-card" onclick="showBiodata('Lunin', 13, 5, 8, 12, 450, 2, 5)">
+                <img src="asset/pemain/depan/goalkeeper/Lunin.png" alt="Lunin">
+                <p>Lunin</p>
             </div>
         </div>
     </div>
@@ -190,7 +166,7 @@
     <!-- Biodata Page -->
     <div id="biodata-page" class="container">
         <div class="header">
-            <img src="asset/icon-white-back.png" alt="Back" onclick="showDefenderPage()">
+            <img src="asset/icon-white-back.png" alt="Back" onclick="showgoalkeeperPage()">
             <img src="asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
         </div>
         <div class="biodata-content">
@@ -199,33 +175,33 @@
                 <h2 id="player-name"></h2>
                 <p><strong>Number:</strong> <span id="player-number"></span></p>
                 <p><strong>Matches Played:</strong> <span id="matches-played"></span></p>
-                <p><strong>Goals:</strong> <span id="goals"></span></p>
-                <p><strong>Assists:</strong> <span id="assists"></span></p>
+                <p><strong>Goals Conceded:</strong> <span id="goals"></span></p>
+                <p><strong>Saves:</strong> <span id="saves"></span></p>
                 <p><strong>Minutes Played:</strong> <span id="minutes-played"></span></p>
-                <p><strong>Shots:</strong> <span id="shots"></span></p>
-                <p><strong>Fouls Received:</strong> <span id="fouls-received"></span></p>
+                <p><strong>Clean Sheets:</strong> <span id="shots"></span></p>
+                <p><strong>Matches As Starter:</strong> <span id="strater"></span></p>
             </div>
         </div>
     </div>
 
     <script>
-        function showBiodata(name, number, matches, goals, assists, minutes, shots, fouls) {
-            document.getElementById('defender-page').style.display = 'none';
+        function showBiodata(name, number, matches, goals, saves, minutes, shots, strater) {
+            document.getElementById('goalkeeper-page').style.display = 'none';
             document.getElementById('biodata-page').style.display = 'flex';
-            document.getElementById('player-image').src = `asset/pemain/depan/defender/${name.toLowerCase().replace(' ', '')}.png`;
+            document.getElementById('player-image').src = `asset/pemain/depan/goalkeeper/${name.toLowerCase().replace(' ', '')}.png`;
             document.getElementById('player-name').innerText = name;
             document.getElementById('player-number').innerText = number;
             document.getElementById('matches-played').innerText = matches;
             document.getElementById('goals').innerText = goals;
-            document.getElementById('assists').innerText = assists;
+            document.getElementById('saves').innerText = saves;
             document.getElementById('minutes-played').innerText = minutes;
             document.getElementById('shots').innerText = shots;
-            document.getElementById('fouls-received').innerText = fouls;
+            document.getElementById('strater').innerText = strater;
         }
 
-        function showDefenderPage() {
+        function showgoalkeeperPage() {
             document.getElementById('biodata-page').style.display = 'none';
-            document.getElementById('defender-page').style.display = 'flex';
+            document.getElementById('goalkeeper-page').style.display = 'flex';
         }
     </script>
 
