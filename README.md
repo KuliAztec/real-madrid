@@ -1,12 +1,43 @@
-# real-madrid
+# Website Resmi Real Madrid Fan
 
-Responsi Akhir praktikum pemrogaman web shift C 
-Kelompok 1
+## 📋 Deskripsi Proyek
+Website ini didedikasikan untuk penggemar setia Real Madrid, menyajikan informasi terkini, sejarah, dan berbagai hal menarik seputar klub sepakbola legendaris asal Spanyol ini.
 
-Bilqis Sabrina Shatila (H1D023003)
-Revalina Fidiya Anugrah (H1D0230)
-Muhammad Azka Mauzaky Setyoko (H1D023066)
+## ✨ Fitur Utama
+- Profil Tim Terkini
+- Statistik Pemain
+- Artikel Sejarah Klub
+- Kuis Wawasan Klub
 
-Ini adalah sebuah Website bertemakan Sepakbola dengan timnya yaitu Real Madrid.
+## 🛠 Teknologi yang Digunakan
+- HTML5
+- CSS3
+- JavaScript
+- PHP
+- Hosting: Domainesia
 
-Real Madrid bisa dibilang adalah klub paling bergengsi di dunia.
+### Prasyarat
+- Web Browser modern (Chrome, Firefox, Safari, Edge)
+- Koneksi Internet
+
+### Instalasi Lokal
+1. Clone repository:
+   ```bash
+   git clone https://github.com/KuliAztec/real-madrid.git
+   ```
+
+2. Buka file `index.php` di browser Anda
+
+
+## 📜 Catatan Rilis
+- v1.0.0 - Peluncuran awal website
+
+## Credit
+
+Bilqis Sabrina Shatila
+Revalina Fidiya Anugrah
+Muhammad Azka Mauzaky Setyoko
+
+---
+
+**Disclaimer**: Website ini adalah proyek fan dan tidak resmi terkait dengan Real Madrid Club de Fútbol.

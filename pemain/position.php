@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 ?>
 
@@ -76,7 +75,7 @@ session_start();
 </head>
 <body>
     <div class="container">
-        <a href="../home.php" class="home-icon">
+        <a href="../index.php" class="home-icon">
             <img src="../asset/icon-home.png" alt="Home">
         </a>
 
@@ -84,11 +83,11 @@ session_start();
             <a href="forward.php" class="position-button">
                 <img src="../asset/forward.png" alt="Forward" class="position-image">
             </a>
-            <a href="defender.php" class="position-button">
-                <img src="../asset/defeder.png" alt="Defender" class="position-image">
-            </a>
             <a href="midfielder.php" class="position-button">
                 <img src="../asset/midfielder.png" alt="Midfielder" class="position-image">
+            </a>
+            <a href="defender.php" class="position-button">
+                <img src="../asset/defeder.png" alt="Defender" class="position-image">
             </a>
             <a href="goalkeeper.php" class="position-button">
                 <img src="../asset/goalkeeper.png" alt="Goalkeeper" class="position-image">

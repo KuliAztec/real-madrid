@@ -46,4 +46,5 @@ if ($user_role == 'manager') {
     exit();
 }
 
+// buat debugging role user
 ?>

@@ -20,10 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($password == $confirm_password) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO user (nama, email, password) VALUES ('$name', '$email', '$hashed_password')";
+        $sql = "INSERT INTO user (nama, email, password, role) VALUES ('$name', '$email', '$hashed_password', 'user')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+            header("Location: login.php");
+            exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -60,7 +61,7 @@ $conn->close();
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url(asset/Background.jpg);
+        background: url(../asset/Background.jpg);
         background-size: cover;
         background-position: center;
         transition: opacity 0.3s ease-in-out;

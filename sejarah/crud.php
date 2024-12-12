@@ -89,10 +89,21 @@ $conn->close();
             padding: 0;
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
+            background-color: #f4f4f9;
         }
 
         .container {
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
         }
 
         .form-group {
@@ -102,6 +113,7 @@ $conn->close();
         .form-group label {
             display: block;
             margin-bottom: 5px;
+            color: #555;
         }
 
         .form-group textarea,
@@ -110,6 +122,7 @@ $conn->close();
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 16px;
         }
 
         .form-group button {
@@ -119,6 +132,7 @@ $conn->close();
             background-color: #007bff;
             color: white;
             cursor: pointer;
+            font-size: 16px;
         }
 
         .form-group button:hover {
@@ -137,6 +151,11 @@ $conn->close();
         .sejarah-item strong {
             display: block;
             margin-bottom: 5px;
+            color: #333;
+        }
+
+        .sejarah-item p {
+            color: #555;
         }
 
         .sejarah-item form {
@@ -150,10 +169,30 @@ $conn->close();
             background-color: #007bff;
             color: white;
             cursor: pointer;
+            font-size: 14px;
         }
 
         .sejarah-item form button:hover {
             background-color: #0056b3;
+        }
+
+        .sejarah-item form button.delete {
+            background-color: #dc3545;
+        }
+
+        .sejarah-item form button.delete:hover {
+            background-color: #c82333;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>

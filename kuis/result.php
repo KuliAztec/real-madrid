@@ -14,23 +14,8 @@
 
     session_start();
 
-    // Clear session data to start a new game
-    $_SESSION['encountered_questions'] = [];
-
-    $userId = isset($_SESSION['id_user']) ? intval($_SESSION['id_user']) : 0;
-    $userRole = '';
-
-    if ($userId > 0) {
-        $sql = "SELECT role FROM user WHERE id_user = $userId";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $userRole = $result->fetch_assoc()['role'];
-        } else {
-            error_log("User role not found for user ID: " . $userId);
-        }
-    } else {
-        error_log("User ID not set in session.");
-    }
+    // Retrieve the score from the URL
+    $score = isset($_GET['score']) ? intval($_GET['score']) : 0;
 ?>
 
 <!DOCTYPE html>
@@ -89,14 +74,6 @@
             cursor: pointer;
         }
 
-        .crud-icon {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            position: relative;
-            top: -14px; 
-        }
-
         .button {
             background-color: #000A25;
             color: white;
@@ -134,7 +111,7 @@
             max-width: 600px;
             margin: auto;
             border: 2px solid rgba(255, 255, 255, 0.8);
-            margin-top: 50px; 
+            margin-top: 50px;
         }
 
         .question-box p {
@@ -175,47 +152,23 @@
     </style>
 </head>
 <body>
-    <!-- Halaman Awal -->
-    <div class="container" id="page1">
-        <header>
-            <h1 class="title">GAMES</h1>
-            <div>
-                <a href="../index.php">
-                    <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
-                </a>
-                <?php if ($userRole === 'manager'): ?>
-                <a href="crud.php">
-                    <img src="../asset/pen.png" alt="CRUD Icon" class="crud-icon">
-                </a>
-                <?php endif; ?>
-            </div>
-        </header>
-        <button class="button" id="playButton">PLAY</button>
-    </div>
 
     <!-- Halaman Skor -->
-    <div class="container" id="scorePage" style="display: none;">
+    <div class="container" id="scorePage">
         <header>
             <h1 class="title">SCORE</h1>
-            <div>
-                <a href="../index.php">
-                    <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
-                </a>
-                <?php if ($userRole === 'manager'): ?>
-                <a href="../crud.php">
-                    <img src="../asset/pen.png" alt="CRUD Icon" class="crud-icon">
-                </a>
-                <?php endif; ?>
-            </div>
+            <a href="../index.php">
+                <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
+            </a>
         </header>
         <div class="score-box">
             <div>
                 <h2>BENAR</h2>
-                <p id="correct"></p>
+                <p id="correct"><?php echo $score; ?></p>
             </div>
             <div>
                 <h2>SALAH</h2>
-                <p id="wrong"></p>
+                <p id="wrong"><?php echo 10 - $score; ?></p>
             </div>
         </div>
             

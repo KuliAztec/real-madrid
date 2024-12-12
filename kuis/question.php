@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost"; // Ganti dengan server Anda
-    $username = "root"; // Ganti dengan username Anda
-    $password = ""; // Ganti dengan password Anda
-    $dbname = "realmadrid"; // Ganti dengan nama database Anda
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "realmadrid";
     
     // Membuat koneksi
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,6 +19,33 @@
 
     // Retrieve the score from the URL, default to 0 if not set
     $score = isset($_GET['score']) ? intval($_GET['score']) : 0;
+
+    // Initialize encountered questions array in session if not already set
+    if (!isset($_SESSION['encountered_questions'])) {
+        $_SESSION['encountered_questions'] = [];
+    }
+
+    // Handle back button logic
+    if (isset($_GET['action']) && $_GET['action'] === 'back') {
+        array_pop($_SESSION['encountered_questions']);
+        $idnow = max(1, $idnow - 1);
+        $score = max(0, $score - 1); // Decrease score by 1
+        header("Location: question.php?id=$idnow&score=$score");
+        exit();
+    }
+
+    // Handle home button logic
+    if (isset($_GET['action']) && $_GET['action'] === 'home') {
+        $_SESSION['encountered_questions'] = [];
+        header("Location: ../index.php");
+        exit();
+    }
+
+    // Check if 10 questions have been answered
+    if (count($_SESSION['encountered_questions']) >= 10) {
+        header("Location: result.php?score=$score");
+        exit();
+    }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_answer = $_POST['option'] ?? '';
@@ -37,6 +64,9 @@
                 $result_message = "Incorrect!";
             }
         }
+
+        // Add current question ID to encountered questions
+        $_SESSION['encountered_questions'][] = $idnow;
 
         // Redirect to the next question
         $newId = $idnow + 1;
@@ -184,7 +214,7 @@
     <div class="container" id="page2">
         <header>
             <h1 class="title">GAMES</h1>
-            <a href="../home.php">
+            <a href="question.php?action=home">
                 <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
             </a>
         </header>
@@ -192,11 +222,17 @@
 
         <!-- Menampilkan pertanyaan -->
             <?php
-                // Retrieve a random question
-                $sql = "SELECT id_quiz, question FROM quiz ORDER BY RAND() LIMIT 1";
+                // Retrieve a random question excluding encountered ones
+                if (empty($_SESSION['encountered_questions'])) {
+                    $sql = "SELECT id_quiz, question FROM quiz ORDER BY RAND() LIMIT 1";
+                } else {
+                    $encountered_ids = implode(',', $_SESSION['encountered_questions']);
+                    $sql = "SELECT id_quiz, question FROM quiz WHERE id_quiz NOT IN ($encountered_ids) ORDER BY RAND() LIMIT 1";
+                }
+
                 $result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
+                if ($result && $result->num_rows > 0) {
                     // Mengambil data dari hasil query
                     $row = $result->fetch_assoc();
                     $idnow = $row['id_quiz'];
@@ -210,30 +246,32 @@
             <!-- Menampilkan opsi -->
             <form id="quizForm" method="POST" action="">
             <?php
-            $sql_options = "SELECT opt1,opt2,opt3,opt4 FROM quiz WHERE id_quiz = $idnow";
-            $result_options = $conn->query($sql_options);
+            if (isset($idnow)) {
+                $sql_options = "SELECT opt1,opt2,opt3,opt4 FROM quiz WHERE id_quiz = $idnow";
+                $result_options = $conn->query($sql_options);
 
-            if ($result_options->num_rows > 0) {
-                while($row_option = $result_options->fetch_assoc()) {
-                    echo '<div class="option">';
-                    echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt1']) . '">';
-                    echo '<label>' . htmlspecialchars($row_option['opt1']) . '</label>';
-                    echo '</div>';
+                if ($result_options->num_rows > 0) {
+                    while($row_option = $result_options->fetch_assoc()) {
+                        echo '<div class="option">';
+                        echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt1']) . '">';
+                        echo '<label>' . htmlspecialchars($row_option['opt1']) . '</label>';
+                        echo '</div>';
 
-                    echo '<div class="option">';
-                    echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt2']) . '">';
-                    echo '<label>' . htmlspecialchars($row_option['opt2']) . '</label>';
-                    echo '</div>';
+                        echo '<div class="option">';
+                        echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt2']) . '">';
+                        echo '<label>' . htmlspecialchars($row_option['opt2']) . '</label>';
+                        echo '</div>';
 
-                    echo '<div class="option">';
-                    echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt3']) . '">';
-                    echo '<label>' . htmlspecialchars($row_option['opt3']) . '</label>';
-                    echo '</div>';
+                        echo '<div class="option">';
+                        echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt3']) . '">';
+                        echo '<label>' . htmlspecialchars($row_option['opt3']) . '</label>';
+                        echo '</div>';
 
-                    echo '<div class="option">';
-                    echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt4']) . '">';
-                    echo '<label>' . htmlspecialchars($row_option['opt4']) . '</label>';
-                    echo '</div>';
+                        echo '<div class="option">';
+                        echo '<input type="radio" name="option" value="' . htmlspecialchars($row_option['opt4']) . '">';
+                        echo '<label>' . htmlspecialchars($row_option['opt4']) . '</label>';
+                        echo '</div>';
+                    }
                 }
             }
             ?>
@@ -256,10 +294,7 @@
 <script>
     // Navigasi tombol back
     document.querySelector('.back').addEventListener('click', () => {
-        const newId = <?php echo $idnow; ?> - 1;
-        if (newId >= 1) {
-            window.location.href = `question.php?id=${newId}&score=<?php echo $score; ?>`;
-        }
+        window.location.href = `question.php?id=<?php echo $idnow; ?>&score=<?php echo $score; ?>&action=back`;
     });
 
     // Navigasi tombol next

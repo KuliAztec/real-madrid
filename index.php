@@ -111,11 +111,11 @@ session_start();
         <h1>REAL <span>MADRID</span></h1>
       </div>
       <div class="menu">
-        <a href="home.php">HOME</a>
+        <a href="index.php">HOME</a>
         <a href="sejarah/history.php">HISTORY</a>
         <a href="pemain/players.php">PLAYERS</a>
         <a href="kuis/game.php">GAMES</a>
-        <a href="logout.php">LOGOUT</a> 
+        <a href="autentikasi/logout.php">LOGOUT</a> 
       </div>
     </div>
     <div class="hero">

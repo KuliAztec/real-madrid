@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost"; // Ganti dengan server Anda
-    $username = "root"; // Ganti dengan username Anda
-    $password = ""; // Ganti dengan password Anda
-    $dbname = "realmadrid"; // Ganti dengan nama database Anda
+    $servername = "localhost"; 
+    $username = "root"; 
+    $password = ""; 
+    $dbname = "realmadrid"; 
     
     // Membuat koneksi
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -135,7 +135,7 @@
         <div class="container">
             <header>
                 <h1 class="title">HISTORY</h1>
-                <a href="../home.php">
+                <a href="../index.php">
                     <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
                 </a>
             </header>

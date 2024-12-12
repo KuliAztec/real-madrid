@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $servername = "localhost"; // Ganti dengan server Anda
-    $username = "root"; // Ganti dengan username Anda
-    $password = ""; // Ganti dengan password Anda
-    $dbname = "realmadrid"; // Ganti dengan nama database Anda
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "realmadrid";
     
     // Membuat koneksi
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -34,10 +34,6 @@
     } else {
         error_log("User ID not set in session.");
     }
-
-    // Debugging statements
-    error_log("User ID: " . $userId);
-    error_log("User Role: " . $userRole);
 ?>
 
 <!DOCTYPE html>
@@ -85,16 +81,15 @@
         }
 
         .crud-button {
-            background-color: white;
-            color: black;
+            color: white;
             text-decoration: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 10px;
-            border: 1px solid black;
+            padding: 5px 10px;
             cursor: pointer;
-            margin-left: 20px;
-            align-self: center; /* Align the button vertically with the home icon */
+            margin-left: 10px;
+            align-self: center;
+            width: 35px;
+            height: 40px;
+            top: 10px;
         }
 
         main {
@@ -160,11 +155,14 @@
         <header>
             <h1 class="title">HISTORY</h1>
             <div style="display: flex; align-items: center;">
-                <a href="../home.php">
+                <a href="../index.php">
                     <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
                 </a>
                 <?php if ($userRole == 'manager'): ?>
-                    <a href="crud_form.php" class="crud-button">Add</a>
+                    <a href="crud.php">
+                        <img src="../asset/pen.png" alt="Add" class="crud-button">
+                    </a>
+                </a>
                 <?php endif; ?>
             </div>
         </header>
