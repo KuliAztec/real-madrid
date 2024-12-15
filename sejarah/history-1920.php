@@ -1,9 +1,9 @@
 <?php
     session_start();
     $servername = "localhost";
-    $username = "root";
+    $username = "ifunsoed_realmadrid";
     $password = "";
-    $dbname = "realmadrid";
+    $dbname = "ifunsoed_realmadrid";
     
     // Membuat koneksi
     $conn = new mysqli($servername, $username, $password, $dbname);
