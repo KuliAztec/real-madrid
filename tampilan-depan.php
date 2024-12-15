@@ -125,7 +125,7 @@
 
   <script>
     function redirectToLogin() {
-      window.location.href = "login.php";
+      window.location.href = "autentikasi/login.php";
     }
   </script>
 </body>

@@ -152,7 +152,7 @@ session_start();
     <div id="defender-page">
         <div class="header">
             <img src="../asset/icon-white-back.png" alt="Back" onclick="window.location.href='position.php'">
-            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
+            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='../index.php'">
         </div>
         <h1>Defenders Players</h1>
         <div class="players-grid">
@@ -161,7 +161,7 @@ session_start();
                 <p>Carvajal</p>
             </div>
             <div class="player-card" onclick="showBiodata('Militao', 3, 17, 1, 1, 1312, 11, 11)">
-                <img src="../asset/pemain/depan/defender/Militao.png" alt="Militao">
+                <img src="../asset/pemain/depan/defender/militao.png" alt="Militao">
                 <p>Militao</p>
             </div>
             <div class="player-card" onclick="showBiodata('Alaba', 4, 17, 0, 2, 1407, 14, 2)">
@@ -185,7 +185,7 @@ session_start();
                 <p>Rudiger</p>
             </div>
             <div class="player-card" onclick="showBiodata('Mendy', 23, 14, 0, 0, 1039, 0, 8)">
-                <img src="../asset/pemain/depan/defender/Mendy.png" alt="Mendy">
+                <img src="../asset/pemain/depan/defender/mendy.png" alt="Mendy">
                 <p>F. Mendy</p>
             </div>
         </div>

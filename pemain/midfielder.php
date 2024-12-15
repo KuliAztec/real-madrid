@@ -157,31 +157,31 @@ session_start();
         <h1>Midfielder Players</h1>
         <div class="players-grid">
             <div class="player-card" onclick="showBiodata('Bellingham', 5, 14, 2, 2, 1205, 18, 23)">
-                <img src="../asset/pemain/depan/midfielder/Bellingham.png" alt="Bellingham">
+                <img src="../asset/pemain/depan/midfielder/bellingham.png" alt="Bellingham">
                 <p>Bellingham</p>
             </div>
             <div class="player-card" onclick="showBiodata('Camavinga', 6, 8, 0, 0, 521, 2, 17)">
-                <img src="../asset/pemain/depan/midfielder/Camavinga.png" alt="Camavinga">
+                <img src="../asset/pemain/depan/midfielder/camavinga.png" alt="Camavinga">
                 <p>Camavinga</p>
             </div>
             <div class="player-card" onclick="showBiodata('Valverde', 8, 18, 4, 1, 1527, 18, 9)">
-                <img src="../asset/pemain/depan/midfielder/Valverde.png" alt="Valverde">
+                <img src="../asset/pemain/depan/midfielder/valverde.png" alt="Valverde">
                 <p>Valverde</p>
             </div>
             <div class="player-card" onclick="showBiodata('Modrić', 10, 18, 0, 2, 801, 6, 6)">
-                <img src="../asset/pemain/depan/midfielder/Modrić.png" alt="Modrić">
+                <img src="../asset/pemain/depan/midfielder/modric.png" alt="Modric">
                 <p>Modrić</p>
             </div>
             <div class="player-card" onclick="showBiodata('Tchouaméni', 15, 14, 0, 0, 1146, 9, 11)">
-                <img src="../asset/pemain/depan/midfielder/Tchouaméni.png" alt="Tchouaméni">
+                <img src="../asset/pemain/depan/midfielder/tchouameni.png" alt="Tchouaméni">
                 <p>Tchouaméni</p>
             </div>
             <div class="player-card" onclick="showBiodata('Arda', 15, 13, 0, 1, 381, 9, 13)">
-                <img src="../asset/pemain/depan/midfielder/Arda.png" alt="Arda">
+                <img src="../asset/pemain/depan/midfielder/arda.png" alt="Arda">
                 <p>Arda Güler</p>
             </div>
             <div class="player-card" onclick="showBiodata('Ceballos', 19, 7, 0, 0, 197, 0, 8)">
-                <img src="../asset/pemain/depan/midfielder/Ceballos.png" alt="Ceballos">
+                <img src="../asset/pemain/depan/midfielder/ceballos.png" alt="Ceballos">
                 <p>D. Ceballos</p>
             </div>
         </div>
@@ -191,7 +191,7 @@ session_start();
     <div id="biodata-page" class="container">
         <div class="header">
             <img src="../asset/icon-white-back.png" alt="Back" onclick="showmidfielderPage()">
-            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
+            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='../index.php'">
         </div>
         <div class="biodata-content">
             <img id="player-image" src="" alt="Player">
@@ -212,7 +212,11 @@ session_start();
         function showBiodata(name, number, matches, goals, assists, minutes, shots, fouls) {
             document.getElementById('midfielder-page').style.display = 'none';
             document.getElementById('biodata-page').style.display = 'flex';
-            document.getElementById('player-image').src = `../asset/pemain/depan/midfielder/${name.toLowerCase().replace(' ', '')}.png`;
+            
+            // Handle special characters in player names
+            const playerImageName = name.toLowerCase().replace(' ', '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            document.getElementById('player-image').src = `../asset/pemain/depan/midfielder/${playerImageName}.png`;
+            
             document.getElementById('player-name').innerText = name;
             document.getElementById('player-number').innerText = number;
             document.getElementById('matches-played').innerText = matches;

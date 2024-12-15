@@ -157,11 +157,11 @@ session_start();
         <h1>Goalkeeper</h1>
         <div class="players-grid">
             <div class="player-card" onclick="showBiodata('Courtois', 1, 13, 10, 30, 1170, 30, 13)">
-                <img src="../asset/pemain/depan/goalkeeper/Courtois.png" alt="Courtois">
+                <img src="../asset/pemain/depan/goalkeeper/courtois.png" alt="Courtois">
                 <p>Courtois</p>
             </div>
             <div class="player-card" onclick="showBiodata('Lunin', 13, 5, 8, 12, 450, 2, 5)">
-                <img src="../asset/pemain/depan/goalkeeper/Lunin.png" alt="Lunin">
+                <img src="../asset/pemain/depan/goalkeeper/lunin.png" alt="Lunin">
                 <p>Lunin</p>
             </div>
         </div>
@@ -171,7 +171,7 @@ session_start();
     <div id="biodata-page" class="container">
         <div class="header">
             <img src="../asset/icon-white-back.png" alt="Back" onclick="showgoalkeeperPage()">
-            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
+            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='../index.php'">
         </div>
         <div class="biodata-content">
             <img id="player-image" src="" alt="Player">

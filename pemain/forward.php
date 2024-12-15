@@ -157,23 +157,23 @@ session_start();
         <h1>Forwards Players</h1>
         <div class="players-grid">
             <div class="player-card" onclick="showBiodata('Vini', 7, 18, 12, 6, 1522, 43, 48)">
-                <img src="../asset/pemain/depan/forward/Vini.png" alt="Vini">
+                <img src="../asset/pemain/depan/forward/vini.png" alt="Vini">
                 <p>Vini Jr.</p>
             </div>
-            <div class="player-card" onclick="showBiodata('Mbappé', 9, 17, 9, 2, 1410, 54, 17)">
-                <img src="../asset/pemain/depan/forward/Mbappé.png" alt="Mbappé">
+            <div class="player-card" onclick="showBiodata('Mbappe', 9, 17, 9, 2, 1410, 54, 17)">
+                <img src="../asset/pemain/depan/forward/mbappe.png" alt="Mbappé">
                 <p>Mbappé</p>
             </div>
             <div class="player-card" onclick="showBiodata('Rodrygo', 11, 15, 3, 2, 919, 16, 14)">
-                <img src="../asset/pemain/depan/forward/Rodrygo.png" alt="Rodrygo">
+                <img src="../asset/pemain/depan/forward/rodrygo.png" alt="Rodrygo">
                 <p>Rodrygo</p>
             </div>
             <div class="player-card" onclick="showBiodata('Endrick', 16, 11, 2, 0, 125, 10, 4)">
-                <img src="../asset/pemain/depan/forward/Endrick.png" alt="Endrick">
+                <img src="../asset/pemain/depan/forward/endrick.png" alt="Endrick">
                 <p>Endrick V.</p>
             </div>
             <div class="player-card" onclick="showBiodata('Brahim', 21, 10, 1, 1, 267, 4, 7)">
-                <img src="../asset/pemain/depan/forward/Brahim.png" alt="Brahim">
+                <img src="../asset/pemain/depan/forward/brahim.png" alt="Brahim">
                 <p>Brahim</p>
             </div>
         </div>
@@ -183,7 +183,7 @@ session_start();
     <div id="biodata-page" class="container">
         <div class="header">
             <img src="../asset/icon-white-back.png" alt="Back" onclick="showforwardPage()">
-            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='index.php'">
+            <img src="../asset/icon-white-home.png" alt="Home" onclick="window.location.href='../index.php'">
         </div>
         <div class="biodata-content">
             <img id="player-image" src="" alt="Player">
