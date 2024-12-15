@@ -1,3 +1,41 @@
+<?php
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "realmadrid";
+    
+    // Membuat koneksi
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    
+    // Memeriksa koneksi
+    if ($conn->connect_error) {
+        die("Koneksi gagal: " . $conn->connect_error);
+    }
+
+    $idnow = isset($_GET['id']) ? intval($_GET['id']) : 1; // Mengambil id dari parameter URL atau default ke 1
+
+    $sql = "SELECT * FROM sejarah WHERE id_sejarah = $idnow";
+    $result = $conn->query($sql);
+    $currentSejarah = $result->fetch_assoc();
+
+    // Assuming user ID is stored in session
+    $userId = isset($_SESSION['id_user']) ? intval($_SESSION['id_user']) : 0;
+    $userRole = '';
+
+    if ($userId > 0) {
+        $sql = "SELECT role FROM user WHERE id_user = $userId";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $userRole = $result->fetch_assoc()['role'];
+        } else {
+            error_log("User role not found for user ID: " . $userId);
+        }
+    } else {
+        error_log("User ID not set in session.");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +55,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            background: url('asset/background-history.png') no-repeat center center/cover;
+            background: url('../asset/background-history.png') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             color: white;
@@ -40,6 +78,18 @@
             width: 100px;
             height: 100px;
             cursor: pointer;
+        }
+
+        .crud-button {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+            align-self: center;
+            width: 35px;
+            height: 40px;
+            top: 10px;
         }
 
         main {
@@ -104,22 +154,32 @@
         <!-- Header -->
         <header>
             <h1 class="title">HISTORY</h1>
-            <a href="index.php">
-                <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
-            </a>
+            <div style="display: flex; align-items: center;">
+                <a href="../index.php">
+                    <img src="../asset/icon-white-home.png" alt="Home Icon" class="home-icon">
+                </a>
+                <?php if ($userRole == 'manager'): ?>
+                    <a href="crud.php">
+                        <img src="../asset/pen.png" alt="Add" class="crud-button">
+                    </a>
+                </a>
+                <?php endif; ?>
+            </div>
         </header>
 
         <!-- Main Content -->
         <main>
             <div class="content">
                 <p>
-                    Olahraga baru dari Inggris bernama sepak bola mulai merambah negara kita. Penerapannya yang cepat berarti bahwa pada akhir abad ke-19 dan awal abad ke-20, organisasi-organisasi pertama dibentuk untuk mempraktikkannya. Salah satunya adalah Madrid Football Club, pendahulu Real Madrid. Julián Palacios adalah pemimpin pertamanya, tetapi Juan Padrós-lah yang secara resmi membentuk lembaga tersebut (1902). Minat tumbuh sedemikian rupa sehingga Madrid mengusulkan diadakannya turnamen sebagai penghormatan kepada raja Alfonso XIII. Inisiatif ini menjadi Copa de España.
+                    <?= $currentSejarah ? nl2br(htmlspecialchars($currentSejarah['isi'])) : 'Sejarah akan tercipta'; ?>
                 </p>
             </div>
         </main>
 
         <!-- Year -->
-        <div class="year">1902-1910</div>
+        <div class="year">
+            <?= $currentSejarah ? htmlspecialchars($currentSejarah['tahun']) : ''; ?>
+        </div>
 
         <!-- Footer -->
         <footer>
@@ -131,11 +191,21 @@
     <script>
         // Navigasi tombol prev dan next
         document.querySelector('.prev-button').addEventListener('click', () => {
-            window.location.href = 'history.php';
+            if (<?= $idnow ?> > 1) {
+                window.location.href = 'history-1920.php?id=<?= $idnow - 1; ?>';
+            } else {
+                window.location.href = 'history.php';
+            }
         });
 
         document.querySelector('.next-button').addEventListener('click', () => {
-            window.location.href = 'history-next.php';
+            fetch('check_content.php?id=<?= $idnow + 1; ?>')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.hasContent) {
+                        window.location.href = 'history-1920.php?id=<?= $idnow + 1; ?>';
+                    }
+                });
         });
     </script>
 </body>

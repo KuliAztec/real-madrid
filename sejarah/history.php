@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History With Splash Screen</title>
+    <title>Splash Screen Example</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <style>
         /* Global Styles */
@@ -118,7 +118,7 @@
         <div class="container">
             <header>
                 <h1 class="title">HISTORY</h1>
-                <a href="index.php">
+                <a href="home.php">
                     <img src="asset/icon-white-home.png" alt="Home Icon" class="home-icon">
                 </a>
             </header>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: url('asset/background-players.png');
+            background: url('../asset/background-players.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

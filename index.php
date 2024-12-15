@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -109,9 +112,10 @@
       </div>
       <div class="menu">
         <a href="index.php">HOME</a>
-        <a href="history.php">HISTORY</a>
-        <a href="players.php">PLAYERS</a>
-        <a href="game.php">GAMES</a>
+        <a href="sejarah/history.php">HISTORY</a>
+        <a href="pemain/players.php">PLAYERS</a>
+        <a href="kuis/game.php">GAMES</a>
+        <a href="autentikasi/logout.php">LOGOUT</a> 
       </div>
     </div>
     <div class="hero">

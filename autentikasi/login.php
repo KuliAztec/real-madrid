@@ -1,5 +1,6 @@
 <?php
-  // Create connection
+  session_start();
+  
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -25,12 +26,12 @@
       if (mysqli_num_rows($result) == 1) {
           $user = mysqli_fetch_assoc($result);
           if (password_verify($password, $user['password'])) {
-              session_start();
               $_SESSION['loggedin'] = true;
               $_SESSION['email'] = $email;
+              $_SESSION['id_user'] = $user['id_user']; // Set the user ID in session
               echo "Login successful!";
               // Redirect
-              header("Location: home.php");
+              header("Location: ../index.php");
               exit;
           } else {
               echo "Invalid email or password.";
@@ -68,7 +69,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url(asset/Background.jpg);
+        background: url(../asset/Background.jpg);
         background-size: cover;
         background-position: center;
         transition: opacity 0.3s ease-in-out;
