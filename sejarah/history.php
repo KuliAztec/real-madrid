@@ -1,20 +1,3 @@
-<?php
-    $servername = "localhost"; 
-    $username = "ifunsoed_realmadrid"; 
-    $password = ""; 
-    $dbname = "ifunsoed_realmadrid"; 
-    
-    // Membuat koneksi
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    
-    // Memeriksa koneksi
-    if ($conn->connect_error) {
-        die("Koneksi gagal: " . $conn->connect_error);
-    }
-
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
